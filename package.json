@@ -1,0 +1,65 @@
+{
+  "name": "terminal-tetris",
+  "version": "1.0.0",
+  "description": "Terminal Tetris - a W.O.P.R. green-phosphor Tetris game",
+  "author": "Terminal Tetris",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.terminaltetris.game",
+    "productName": "Terminal Tetris",
+    "files": [
+      "main.js",
+      "index.html",
+      "manifest.webmanifest",
+      "sw.js",
+      "icons/**"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "createDesktopShortcut": true
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "category": "public.app-category.games",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Game",
+      "target": [
+        "AppImage"
+      ]
+    }
+  }
+}
